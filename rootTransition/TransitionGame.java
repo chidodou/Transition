@@ -14,15 +14,15 @@ class TransitionGame {
         Border titleBorder = BorderFactory.createLineBorder(Color.RED, 2);
         label.setBorder(titleBorder);
         frame.add(label);
-        createPlayButton();
+        actionPlayButton();
     }
 
-    public static void createPlayButton() { // Play button that will go straight to a song in the first ver
+    public static void actionPlayButton() { // Play button that will go straight to a song in the first ver for testing
         JButton button = new JButton("Play!");
         button.setPreferredSize(new Dimension(200, 50));
-        button.addActionListener(e -> {
-            JOptionPane.showMessageDialog(null, "Button Clicked!");
-        });
+        button.addActionListener(e ->
+                JOptionPane.showMessageDialog
+                        (null, "Button Clicked!"));
         button.setBounds(600, 600, 200, 50);
         frame.add(button);
         frame.setVisible(true);
