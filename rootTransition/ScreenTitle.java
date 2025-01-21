@@ -13,7 +13,25 @@ public class ScreenTitle {
 
     // Play button that will go straight to a song in the first ver for testing
     public static void clickableGeneratePlayButton() {
-        Generate.clickable(575,450,200,200);
+        JButton playButton = Generate.clickable(575, 450, 200, 200);
+
+        // addActionlistener used to do an action when the button is clicked
+        playButton.addActionListener(e -> {
+            Game.window.getContentPane().removeAll(); // Remove all components
+            Game.window.repaint(); // Repaint to clear the screen
+
+            // Start a new game or load a new screen
+            System.out.println("Play button clicked! Game starting...");
+
+            // Example: Add new components for the game
+            JLabel gameLabel = new JLabel("Game started!");
+            gameLabel.setBounds(300, 200, 200, 50);
+            Game.window.add(gameLabel);
+
+            // Revalidate and repaint the window to display new components
+            Game.window.revalidate();
+            Game.window.repaint();
+        });
     }
 
     public static void clickableGenerateSettingsButton() {

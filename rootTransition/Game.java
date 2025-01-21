@@ -7,8 +7,8 @@ class Game {
     public void start() {
         window.setSize(1366, 768);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setLayout(null);
         ScreenTitle.generateScreen();
-
         Game.window.setVisible(true);
         GraphicsEnvironmentGetter.getFonts();
     }

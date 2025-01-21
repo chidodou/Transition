@@ -4,17 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54386ee9-f715-4549-9881-34270b135d95" name="Changes" comment="rearranging roots of intellij">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rootTransition/Generate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rootTransition/GraphicsEnvironmentGetter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rootTransition/ScreenGame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rootTransition/ScreenSettings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rootTransition/ScreenTitle.java" afterDir="false" />
+    <list default="true" id="54386ee9-f715-4549-9881-34270b135d95" name="Changes" comment="defining methods to simplify actions">
+      <change afterPath="$PROJECT_DIR$/rootTransition/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/Grfx.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Start.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/TransitionGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Transition/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Transition/ScreenSettings.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/ScreenSettings.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Transition/ScreenTitle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/ScreenTitle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rootTransition/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rootTransition/Generate.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Generate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rootTransition/ScreenGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/ScreenGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rootTransition/ScreenSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/ScreenSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rootTransition/ScreenTitle.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/ScreenTitle.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,30 +32,28 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "chidodou"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;chidodou&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/chidodou/Transition.git",
+    "accountId": "ced0d0ae-ec27-469a-86bf-217fa275fa37"
   }
 }]]></component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="ced0d0ae-ec27-469a-86bf-217fa275fa37" />
-        <option name="url" value="https://github.com/chidodou/Transition.git" />
-      </UrlAndAccount>
-    </option>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2rpe3otVggBmqR0VOK0qtQ5sKwK" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -63,14 +62,23 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Start.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "run.code.analysis.last.selected.profile": "pProject Default"
+    "kotlin-language-version-configured": "true",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.updates"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Start" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Start" />
@@ -129,11 +137,24 @@
       <option name="project" value="LOCAL" />
       <updated>1737260869398</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="defining methods to simplify actions">
+      <option name="closed" value="true" />
+      <created>1737278136012</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1737278136012</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="rearranging roots of intellij" />
-    <option name="LAST_COMMIT_MESSAGE" value="rearranging roots of intellij" />
+    <MESSAGE value="defining methods to simplify actions" />
+    <option name="LAST_COMMIT_MESSAGE" value="defining methods to simplify actions" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
