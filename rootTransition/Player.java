@@ -1,65 +1,89 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.util.EventListener;
-import javax.swing.*;
+
+// TODO: add player as a square, can wasd, can do diagonal,
+// TODO: add goals for the player
+// format - new Thread(() -> {}).start();
 
 
-public class Player {
+public class Player implements KeyListener, MouseListener, EventListener, ActionListener {
     Rectangle player = new Rectangle();
     static KeyListener detectKey;
-    MouseListener detectMouse = new MouseListener() {
-        @Override
-        public void mouseClicked(MouseEvent e) {
+    private boolean doMoveUp = false;
+    private boolean doMoveDown = false;
+    private boolean doMoveLeft = false;
+    private boolean doMoveRight = false;
 
-        }
+    public void startMovement() {
+        // Start a new thread to handle movement
+        new Thread(() -> {
 
-        @Override
-        public void mousePressed(MouseEvent e) {
+            while (true) {
+                if (doMoveUp) {
+                }
+                if (doMoveDown) {
+                }
+                if (doMoveLeft) {
+                }
+                if (doMoveRight) {
+                }
 
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
-    };
-    EventListener detectEvent = new EventListener() {
-        @Override
-        public int hashCode() { return super.hashCode(); }
-
-
-    };
-    ActionListener detectAction = e -> {
-
-    };
-    public static void move() {
-        detectKey = new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-
+                // Adjust the sleep time to control the speed of movement
+                try { Thread.sleep(10); }
+                catch (InterruptedException e) { e.printStackTrace(); }
             }
+        }).start();
+    }
 
-            @Override
-            public void keyPressed(KeyEvent e) {
-                int key = e.getKeyCode();
 
-                
-            }
 
-            @Override
-            public void keyReleased(KeyEvent e) {
+    @Override
+    public void actionPerformed(ActionEvent e) {
 
-            }
-        };
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+
+
+
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
     }
 }
+

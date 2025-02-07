@@ -1,6 +1,9 @@
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+// addActionlistener used to do an action when the button is clicked
+// TODO: "format" - button.addActionListener(event -> {});
+
 
 public class ScreenTitle {
 
@@ -11,43 +14,37 @@ public class ScreenTitle {
         generateTitle();
     }
 
-    // Play button that will go straight to a song in the first ver for testing
+    // makes play button, ONLY WORKS WITH addActionListener()
     public static void clickableGeneratePlayButton() {
         JButton playButton = Generate.clickable(575, 450, 200, 200);
 
-        // addActionlistener used to do an action when the button is clicked
         playButton.addActionListener(e -> {
-            Game.window.getContentPane().removeAll(); // Remove all components
-            Game.window.repaint(); // Repaint to clear the screen
-
-            // Start a new game or load a new screen
-            System.out.println("Play button clicked! Game starting...");
-
-            // Example: Add new components for the game
-            JLabel gameLabel = new JLabel("Game started!");
-            gameLabel.setBounds(300, 200, 200, 50);
-            Game.window.add(gameLabel);
-
-            // Revalidate and repaint the window to display new components
-            Game.window.revalidate();
-            Game.window.repaint();
+            Window.window.getContentPane().removeAll();
+            Window.window.repaint();
+            ScreenGame.generateScreen();
         });
     }
 
+    // TODO: uses ScreenGame as a filler for now
     public static void clickableGenerateSettingsButton() {
-        Generate.clickable(625,50,100,100);
+        JButton settingsButton = Generate.clickable(625,50,100,100);
+        settingsButton.addActionListener(e -> {
+            Window.window.getContentPane().removeAll();
+            Window.window.repaint();
+            ScreenSettings.generateScreen();
+        });
     }
+
     // generates middle title text (& testing border) for title screen
     public static void generateTitle() {
-        Game.window.setLayout(null);
+        Window.window.setLayout(null);
         JLabel label = new JLabel("Transition");
         label.setFont(new Font("Serif", Font.BOLD, 64));  // Font: Serif, Style: Bold, Size: 24
         label.setBounds(525, 275, 300, 100);  // x=100, y=50, width=200, height=30
 
-        // shows the full border of the title
         Border titleBorder = BorderFactory.createLineBorder(Color.RED, 2);
         label.setBorder(titleBorder);
-        Game.window.add(label);
+        Window.window.add(label);
     }
 
 }

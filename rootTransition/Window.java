@@ -1,7 +1,10 @@
 import javax.swing.*;
-import java.awt.GraphicsEnvironment;
 
-class Game {
+/*
+Defines the window, which runs in class Start
+ */
+
+class Window {
     static JFrame window = new JFrame("Transition");
     // I want to add all other methods here for organization & efficiency
     public void start() {
@@ -9,12 +12,7 @@ class Game {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setLayout(null);
         ScreenTitle.generateScreen();
-        Game.window.setVisible(true);
+        Window.window.setVisible(true);
         GraphicsEnvironmentGetter.getFonts();
     }
 }
-
-/*
-do not tamper unless you know what you are doing
-obv a pretty dangerous class
- */

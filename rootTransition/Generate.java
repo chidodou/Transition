@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 public class Generate {
 
@@ -17,7 +16,7 @@ public class Generate {
         button.setForeground(Color.WHITE);
         button.setBounds(x,y,w,h);
 
-        Game.window.add(button);
+        Window.window.add(button);
         return button; // now can be customized
     }
 }
