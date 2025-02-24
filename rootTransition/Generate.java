@@ -1,10 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
 
+/*
+Creats all methods needed to commit to an action, such as a JButton "clickable"
+ */
+
 public class Generate {
 
     // generates a clickable area that may be set and customized
-    // currently uses the painted border as a reference
+    // currently uses painted border as reference
     // will return an object of JButton
     public static JButton clickable(int x, int y, int w, int h) {
         JButton button = new JButton();

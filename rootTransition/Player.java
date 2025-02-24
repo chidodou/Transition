@@ -1,7 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.util.EventListener;
-
 // TODO: add player as a square, can wasd, can do diagonal,
 // TODO: add goals for the player
 // format - new Thread(() -> {}).start();
@@ -16,7 +15,7 @@ public class Player implements KeyListener, MouseListener, EventListener, Action
     private boolean doMoveRight = false;
 
     public void startMovement() {
-        // Start a new thread to handle movement
+        // A thread should be used to handle all movement
         new Thread(() -> {
 
             while (true) {
@@ -68,9 +67,7 @@ public class Player implements KeyListener, MouseListener, EventListener, Action
 
     }
 
-
-
-
+    // These further overrides only focus on key listening
     @Override
     public void keyTyped(KeyEvent e) {
 

@@ -1,8 +1,8 @@
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-// addActionlistener used to do an action when the button is clicked
-// TODO: "format" - button.addActionListener(event -> {});
+
+ // TODO: "format" - button.addActionListener(event -> {});
 
 
 public class ScreenTitle {
@@ -25,7 +25,6 @@ public class ScreenTitle {
         });
     }
 
-    // TODO: uses ScreenGame as a filler for now
     public static void clickableGenerateSettingsButton() {
         JButton settingsButton = Generate.clickable(625,50,100,100);
         settingsButton.addActionListener(e -> {
