@@ -1,8 +1,8 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.util.EventListener;
-// TODO: add player as a square, can wasd, can do diagonal,
-// TODO: add goals for the player
+// TODO: add player as a square, can wasd, can do diagonal properly,
+// TODO: add GOALS for the player
 // format - new Thread(() -> {}).start();
 
 

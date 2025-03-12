@@ -22,5 +22,7 @@ public class ScreenGame {
             Window.window.repaint();
             ScreenTitle.generateScreen();
         });
+        ImageIcon icon = new ImageIcon("backarrow.png");
+        backButton.setIcon(icon);
     }
 }

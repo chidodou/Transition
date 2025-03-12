@@ -4,20 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54386ee9-f715-4549-9881-34270b135d95" name="Changes" comment="defining methods to simplify actions">
-      <change afterPath="$PROJECT_DIR$/rootTransition/Sprites.java" afterDir="false" />
+    <list default="true" id="54386ee9-f715-4549-9881-34270b135d95" name="Changes" comment="before opengl update">
+      <change afterPath="$PROJECT_DIR$/rootTransition/testPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Transition.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Transition.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Transition/Generate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/Generate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Transition/GraphicsEnvironmentGetter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/GraphicsEnvironmentGetter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Transition/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Transition/ScreenGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/ScreenGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lwjgl-opengl/khronos_license.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lwjgl-opengl/lwjgl-opengl-javadoc.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lwjgl-opengl/lwjgl-opengl-natives-freebsd.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lwjgl-opengl/lwjgl-opengl-natives-linux-arm32.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lwjgl-opengl/lwjgl-opengl-natives-linux-arm64.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lwjgl-opengl/lwjgl-opengl-natives-linux-ppc64le.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lwjgl-opengl/lwjgl-opengl-natives-linux-riscv64.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lwjgl-opengl/lwjgl-opengl-natives-linux.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lwjgl-opengl/lwjgl-opengl-natives-macos-arm64.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lwjgl-opengl/lwjgl-opengl-natives-macos.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lwjgl-opengl/lwjgl-opengl-natives-windows-arm64.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lwjgl-opengl/lwjgl-opengl-natives-windows-x86.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lwjgl-opengl/lwjgl-opengl-natives-windows.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lwjgl-opengl/lwjgl-opengl-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lwjgl-opengl/lwjgl-opengl.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Transition/ScreenSettings.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/ScreenSettings.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Transition/ScreenTitle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/ScreenTitle.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Transition/Start.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/Start.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Transition/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/Window.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rootTransition/Generate.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Generate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rootTransition/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rootTransition/ScreenGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/ScreenGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rootTransition/ScreenSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/ScreenSettings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rootTransition/ScreenTitle.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/ScreenTitle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rootTransition/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Start.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rootTransition/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Window.java" afterDir="false" />
@@ -65,39 +78,59 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Start.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/dodom/OneDrive/Desktop/Transition/lwjgl-opengl/lwjgl-opengl.jar",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.general"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Start.executor&quot;: &quot;Run&quot;,
+    &quot;Application.testPlayer.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dodom/OneDrive/Desktop/Transition/lwjgl-3.3.6/lwjgl-zstd&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Start">
     <configuration name="Start" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Start" />
       <module name="Transition" />
+      <shortenClasspath name="ARGS_FILE" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <shortenClasspath name="ARGS_FILE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testPlayer" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="testPlayer" />
+      <module name="Transition" />
+      <shortenClasspath name="ARGS_FILE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Start" />
+      <item itemvalue="Application.testPlayer" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -172,13 +205,22 @@
       <option name="project" value="LOCAL" />
       <updated>1738959270794</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="before opengl update">
+      <option name="closed" value="true" />
+      <created>1740432948625</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1740432948625</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="rearranging roots of intellij" />
     <MESSAGE value="defining methods to simplify actions" />
-    <option name="LAST_COMMIT_MESSAGE" value="defining methods to simplify actions" />
+    <MESSAGE value="before opengl update" />
+    <option name="LAST_COMMIT_MESSAGE" value="before opengl update" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

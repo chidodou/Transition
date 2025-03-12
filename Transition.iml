@@ -7,27 +7,6 @@
     </content>
     <orderEntry type="jdk" jdkName="17" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/lwjgl-opengl/lwjgl-opengl-natives-freebsd.jar!/" />
-          <root url="jar://$MODULE_DIR$/lwjgl-opengl/lwjgl-opengl-natives-linux-arm32.jar!/" />
-          <root url="jar://$MODULE_DIR$/lwjgl-opengl/lwjgl-opengl-natives-linux-arm64.jar!/" />
-          <root url="jar://$MODULE_DIR$/lwjgl-opengl/lwjgl-opengl-natives-linux-ppc64le.jar!/" />
-          <root url="jar://$MODULE_DIR$/lwjgl-opengl/lwjgl-opengl-natives-linux-riscv64.jar!/" />
-          <root url="jar://$MODULE_DIR$/lwjgl-opengl/lwjgl-opengl-natives-linux.jar!/" />
-          <root url="jar://$MODULE_DIR$/lwjgl-opengl/lwjgl-opengl-natives-macos-arm64.jar!/" />
-          <root url="jar://$MODULE_DIR$/lwjgl-opengl/lwjgl-opengl-natives-macos.jar!/" />
-          <root url="jar://$MODULE_DIR$/lwjgl-opengl/lwjgl-opengl-natives-windows-arm64.jar!/" />
-          <root url="jar://$MODULE_DIR$/lwjgl-opengl/lwjgl-opengl-natives-windows-x86.jar!/" />
-          <root url="jar://$MODULE_DIR$/lwjgl-opengl/lwjgl-opengl-natives-windows.jar!/" />
-          <root url="jar://$MODULE_DIR$/lwjgl-opengl/lwjgl-opengl.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$MODULE_DIR$/lwjgl-opengl/lwjgl-opengl-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
+    <orderEntry type="library" exported="" name="lwjgl" level="project" />
   </component>
 </module>

@@ -14,7 +14,7 @@ public class Generate {
         JButton button = new JButton();
         button.setOpaque(false);
         button.setContentAreaFilled(false);
-        button.setBorderPainted(true); // show area for testing
+        button.setBorderPainted(false); // show area for testing
 
         // text, not foreground & should not exist without text
         button.setForeground(Color.WHITE);
