@@ -1,17 +1,24 @@
 import javax.swing.*;
 
 public class ScreenGame {
-    // should go to the game screen initialized by Window;
-    // Generate not needed
+
     public static void generateScreen() {
-        JLabel gameLabel = new JLabel("Game started!");
-        gameLabel.setBounds(300, 200, 200, 50);
-        Window.window.add(gameLabel);
-        clickableGenerateBackButton();
+        // Remove all components from the window first
+        Window.window.getContentPane().removeAll();
 
-        Window.window.revalidate(); // calls container from Window.window
+        // Create and add the MovingSquare JPanel to the window
+        MovingSquare movingSquare = new MovingSquare();
+        movingSquare.setBounds(0, 0, 800, 600); // Set bounds to fit the window size
+        Window.window.add(movingSquare);
+
+        clickableGenerateBackButton(); // Add back button
+
+        // Request focus for MovingSquare to ensure key events work
+        movingSquare.requestFocusInWindow();
+
+        // Revalidate and repaint to reflect changes
+        Window.window.revalidate();
         Window.window.repaint();
-
     }
 
     public static void clickableGenerateBackButton() {
@@ -22,7 +29,9 @@ public class ScreenGame {
             Window.window.repaint();
             ScreenTitle.generateScreen();
         });
+
         ImageIcon icon = new ImageIcon("backarrow.png");
         backButton.setIcon(icon);
+        Window.window.add(backButton); // Add the back button to the window
     }
 }
