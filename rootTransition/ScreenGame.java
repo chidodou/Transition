@@ -1,14 +1,14 @@
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.glfw.GLFW.GLFW_PRESS;
 
-public class ScreenSettings {
+public class ScreenGame {
     private Clickable clickableBack;
     double[] mouseX;
     double[] mouseY;
     boolean[] isMouseDown;
     Window w;
 
-    public ScreenSettings(Window w) { this.w = w; }
+    public ScreenGame(Window w) { this.w = w; }
 
     public void init() {
         clickableBack = new Clickable(100, 650, 200, 60, "Back");

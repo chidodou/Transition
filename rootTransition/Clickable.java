@@ -1,14 +1,13 @@
-import org.lwjgl.nanovg.*;
-
+import org.lwjgl.nanovg.NVGColor;
 import static org.lwjgl.nanovg.NanoVG.*;
 
 public class Clickable {
     private final float x, y, width, height;
     private final String label;
-
     private boolean hovered = false;
     private boolean clicked = false;
     private boolean wasPressedLastFrame = false;
+    private static int font = -1; // Static font shared by all buttons
 
     public Clickable(float x, float y, float width, float height, String label) {
         this.x = x;
@@ -18,45 +17,47 @@ public class Clickable {
         this.label = label;
     }
 
+    // Call this ONCE during setup (e.g., in Window.init())
+    public static void initFont(long vg, String fontPath) {
+        font = nvgCreateFont(vg, "default", fontPath);
+        if (font == -1) { throw new RuntimeException("Could not load font: " + fontPath); }
+    }
+
     public void update(double mouseX, double mouseY, boolean isMouseDown) {
-        hovered = mouseX >= x && mouseX <= x + width &&
-                mouseY >= y && mouseY <= y + height;
-
-        // Detect click on mouse down transition
+        hovered = mouseX >= x && mouseX <= x + width && mouseY >= y && mouseY <= y + height;
         clicked = hovered && isMouseDown && !wasPressedLastFrame;
-
         wasPressedLastFrame = isMouseDown;
     }
 
     public void render(long vg) {
-        // Button shape
-        NVGColor colorResultHandle = NVGColor.create();
+        NVGColor color = NVGColor.create();
+
+        // Draw button background
         nvgBeginPath(vg);
         nvgRoundedRect(vg, x, y, width, height, 10);
-        nvgFillColor(vg, hovered ? nvgRGBA((byte)70, (byte)170, (byte)255, (byte)255, colorResultHandle)
-                : nvgRGBA((byte)50, (byte)150, (byte)250, (byte)255, colorResultHandle));
+        nvgFillColor(vg, hovered
+                ? nvgRGBA((byte) 70, (byte) 170, (byte) 255, (byte) 255, color)
+                : nvgRGBA((byte) 50, (byte) 150, (byte) 250, (byte) 255, color));
         nvgFill(vg);
 
-        // Border
-        nvgStrokeColor(vg, nvgRGBA((byte)30, (byte)100, (byte)200, (byte)255, colorResultHandle));
+        // Draw border
+        nvgStrokeColor(vg, nvgRGBA((byte) 30, (byte) 100, (byte) 200, (byte) 255, color));
         nvgStrokeWidth(vg, 2.0f);
         nvgStroke(vg);
 
-        // Label
-        nvgFontSize(vg, 24.0f);
-        // Load font
-        int font = nvgCreateFont(vg, "sans", "sans.ttf");
-        if (font == -1) {
-            throw new RuntimeException("Could not load font.");
+        // Draw label
+        if (font != -1) {
+            nvgFontFaceId(vg, font); // Use the loaded font
         }
+        nvgFontSize(vg, 24.0f);
         nvgTextAlign(vg, NVG_ALIGN_CENTER | NVG_ALIGN_MIDDLE);
-        nvgFillColor(vg, nvgRGBA((byte)255, (byte)255, (byte)255, (byte)255, colorResultHandle));
+        nvgFillColor(vg, nvgRGBA((byte) 255, (byte) 255, (byte) 255, (byte) 255, color));
         nvgText(vg, x + width / 2, y + height / 2, label);
     }
 
     public boolean wasClicked() {
-        boolean c = clicked;
-        clicked = false;
-        return c;
+        boolean result = clicked;
+        clicked = false; // Reset after reading
+        return result;
     }
 }
