@@ -23,6 +23,8 @@ public class Window {
     private ScreenMenu screenMenu;
     private ScreenSettings screenSettings;
     private ScreenGame screenGame;
+    private ScreenEdit screenEdit;
+
 
     private ScreenState currentScreen = ScreenState.SCREEN_MENU;
 
@@ -97,6 +99,9 @@ public class Window {
 
         screenGame = new ScreenGame(this);
         screenGame.init();
+
+        screenEdit = new ScreenEdit(this);
+        screenEdit.init();
     }
 
     private void loop() {
@@ -122,6 +127,11 @@ public class Window {
                     screenGame.update();
                     screenGame.render();
                     break;
+
+                case SCREEN_EDIT:
+                    screenEdit.update();
+                    screenEdit.render();
+                    break;
             }
 
             nvgEndFrame(vg);
@@ -133,19 +143,17 @@ public class Window {
     public enum ScreenState {
         SCREEN_MENU,
         SCREEN_SETTINGS,
-        SCREEN_GAME
+        SCREEN_GAME,
+        SCREEN_EDIT
     }
 
     public void setScreen(ScreenState state) {
         this.currentScreen = state;
 
-        if (state == ScreenState.SCREEN_MENU) {
-            screenMenu.detectC();
-        } else if (state == ScreenState.SCREEN_SETTINGS) {
-            screenSettings.detectC();
-        }
-        else if (state == ScreenState.SCREEN_GAME) {
-            screenGame.detectC();
-        }
+        if (state == ScreenState.SCREEN_MENU) { screenMenu.detectC(); }
+        else if (state == ScreenState.SCREEN_SETTINGS) { screenSettings.detectC(); }
+        else if (state == ScreenState.SCREEN_GAME) { screenGame.detectC(); }
+        else if (state == ScreenState.SCREEN_EDIT) { screenEdit.detectC(); }
     }
+
 }

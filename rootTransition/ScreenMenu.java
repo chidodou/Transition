@@ -4,7 +4,7 @@ import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.nanovg.NanoVG.*;
 
 public class ScreenMenu {
-    private Clickable clickableSettings, clickableGame, clickableExit;
+    private Clickable clickableSettings, clickableGame, clickableExit, clickableEdit;
     double[] mouseX;
     double[] mouseY;
     boolean[] isMouseDown;
@@ -26,7 +26,9 @@ public class ScreenMenu {
     public void init() {
         clickableExit = new Clickable(550, 600, 200, 60, "Exit");
         clickableSettings = new Clickable(550, 500, 200, 60, "Settings"); // Will go to GAME_SCREEN
-        clickableGame = new Clickable(550, 400, 200, 60, "Play");
+        clickableGame = new Clickable(550, 300, 200, 60, "Play");
+        clickableEdit = new Clickable(550, 400, 200, 60, "Edit");
+
     }
 
     public void detectC() {
@@ -50,24 +52,19 @@ public class ScreenMenu {
         clickableExit.update(mouseX[0], mouseY[0], isMouseDown[0]);
         clickableSettings.update(mouseX[0], mouseY[0], isMouseDown[0]);
         clickableGame.update(mouseX[0], mouseY[0], isMouseDown[0]);
+        clickableEdit.update(mouseX[0], mouseY[0], isMouseDown[0]);
 
-        if (clickableExit.wasClicked()) {
-            glfwSetWindowShouldClose(w.window, true);
-        }
-
-        if (clickableSettings.wasClicked()) {
-            w.setScreen(Window.ScreenState.SCREEN_SETTINGS);
-        }
-
-        if (clickableGame.wasClicked()) {
-            w.setScreen(Window.ScreenState.SCREEN_GAME);
-        }
-
+        if (clickableExit.wasClicked()) { glfwSetWindowShouldClose(w.window, true); }
+        if (clickableSettings.wasClicked()) { w.setScreen(Window.ScreenState.SCREEN_SETTINGS); }
+        if (clickableGame.wasClicked()) { w.setScreen(Window.ScreenState.SCREEN_GAME); }
+        if (clickableEdit.wasClicked()) { w.setScreen(Window.ScreenState.SCREEN_EDIT); }
     }
 
     public void render() {
         clickableSettings.render(w.vg);
         clickableGame.render(w.vg);
         clickableExit.render(w.vg);
+        clickableEdit.render(w.vg);
+
     }
 }
