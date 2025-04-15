@@ -9,30 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54386ee9-f715-4549-9881-34270b135d95" name="Changes" comment="redone with opengl, successful screen switching logic">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Transition_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rootTransition/Audio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rootTransition/Beatmap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rootTransition/Beatmap.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rootTransition/Cursor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rootTransition/Edit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rootTransition/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rootTransition/Note.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rootTransition/ScreenBeatmap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rootTransition/ScreenEdit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backarrow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/banner.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bsettings.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gumball.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Transition/ScreenMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/ScreenMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Transition/Window$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/Window$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Transition/Window$ScreenState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/Window$ScreenState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Transition/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/Window.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playButton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/ScreenMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/ScreenMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Window.java" afterDir="false" />
-    </list>
+    <list default="true" id="54386ee9-f715-4549-9881-34270b135d95" name="Changes" comment="notes, beatmaps, audio handling ready to be implemented" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -276,7 +253,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744388691469</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="notes, beatmaps, audio handling ready to be implemented">
+      <option name="closed" value="true" />
+      <created>1744740841626</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1744740841626</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -297,7 +282,8 @@
     <MESSAGE value="last version before alpha push using lwjgl" />
     <MESSAGE value="redone with opengl&#10;&#10;private as version 1 is pushed" />
     <MESSAGE value="redone with opengl, successful screen switching logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="redone with opengl, successful screen switching logic" />
+    <MESSAGE value="notes, beatmaps, audio handling ready to be implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="notes, beatmaps, audio handling ready to be implemented" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
