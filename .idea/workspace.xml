@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54386ee9-f715-4549-9881-34270b135d95" name="Changes" comment="notes, beatmaps, audio handling ready to be implemented" />
+    <list default="true" id="54386ee9-f715-4549-9881-34270b135d95" name="Changes" comment="gitignored" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -261,7 +261,31 @@
       <option name="project" value="LOCAL" />
       <updated>1744740841626</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="gitignored">
+      <option name="closed" value="true" />
+      <created>1744741140886</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1744741140886</updated>
+    </task>
+    <task id="LOCAL-00018" summary="gitignored">
+      <option name="closed" value="true" />
+      <created>1744741192207</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1744741192207</updated>
+    </task>
+    <task id="LOCAL-00019" summary="gitignored">
+      <option name="closed" value="true" />
+      <created>1744741323539</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1744741323539</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -283,7 +307,8 @@
     <MESSAGE value="redone with opengl&#10;&#10;private as version 1 is pushed" />
     <MESSAGE value="redone with opengl, successful screen switching logic" />
     <MESSAGE value="notes, beatmaps, audio handling ready to be implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="notes, beatmaps, audio handling ready to be implemented" />
+    <MESSAGE value="gitignored" />
+    <option name="LAST_COMMIT_MESSAGE" value="gitignored" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
