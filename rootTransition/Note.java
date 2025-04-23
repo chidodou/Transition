@@ -5,5 +5,12 @@ public class Note {
     public int position;   // which track/lane
     public boolean hit = false; // detector for clicked objects
 
+    public void hitNote() {
 
+
+    }
+    public void note() {
+
+    }
+    public boolean isHit() { return hit = true;}
 }

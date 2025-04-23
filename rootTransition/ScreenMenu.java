@@ -3,6 +3,7 @@ import org.lwjgl.nanovg.NVGColor;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.nanovg.NanoVG.*;
 
+
 public class ScreenMenu {
     private Clickable clickableSettings, clickableGame, clickableExit, clickableEdit;
     double[] mouseX;
@@ -20,7 +21,7 @@ public class ScreenMenu {
         nvgRGBA((byte) 255, (byte) 255, (byte) 255, (byte) 255, color);  // White
 
         nvgFillColor(vg, color);
-        nvgText(vg, 650, 200, "Title");
+        nvgText(vg, 650, 200, "Transition");
     }
 
     public void init() {
