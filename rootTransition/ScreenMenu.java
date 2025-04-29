@@ -57,7 +57,7 @@ public class ScreenMenu {
 
         if (clickableExit.wasClicked()) { glfwSetWindowShouldClose(w.window, true); }
         if (clickableSettings.wasClicked()) { w.setScreen(Window.ScreenState.SCREEN_SETTINGS); }
-        if (clickableGame.wasClicked()) { w.setScreen(Window.ScreenState.SCREEN_GAME); }
+        if (clickableGame.wasClicked()) { w.setScreen(Window.ScreenState.SCREEN_SELECT); }
         if (clickableEdit.wasClicked()) { w.setScreen(Window.ScreenState.SCREEN_EDIT); }
     }
 

@@ -1,14 +1,22 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Beatmap {
-    public String title, artist, difficultyName;
-    public ArrayList<Note> notes;
+    public List<Note> notes = new ArrayList<>();
 
     public void loadFromFile(String path) {
-
+        try {
+            List<String> lines = java.nio.file.Files.readAllLines(java.nio.file.Paths.get(path));
+            for (String line : lines) {
+                if (line.trim().isEmpty()) continue;
+                String[] parts = line.split(",");
+                float time = Float.parseFloat(parts[0].trim());
+                int lane = Integer.parseInt(parts[1].trim());
+                notes.add(new Note(time, lane));
+            }
+        }
+        catch (Exception e) { e.printStackTrace(); }
     }
 
-    public void saveToFile(String path) {
-
-    }
+    public List<Note> getNotes() { return notes; }
 }
