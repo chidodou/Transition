@@ -5,7 +5,7 @@ public class Note {
     public int position, type;   // which track/lane
     public boolean hit = false; // detector for clicked objects
 
-    public Note(float time, int lane, int type) {
+    public Note(float time, int x, int y, int type) {
         // time: at what position in milliseconds
         // position: x/y coordinate on the screen
         //type: if note is click or no click
