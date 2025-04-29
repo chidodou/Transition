@@ -9,7 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54386ee9-f715-4549-9881-34270b135d95" name="Changes" comment="get to handling this FUCKING INSTANT" />
+    <list default="true" id="54386ee9-f715-4549-9881-34270b135d95" name="Changes" comment="get to handling this FUCKING INSTANT">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,6 +26,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -398,7 +401,31 @@
       <option name="project" value="LOCAL" />
       <updated>1745950607458</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="get to handling this FUCKING INSTANT">
+      <option name="closed" value="true" />
+      <created>1745950909950</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1745950909950</updated>
+    </task>
+    <task id="LOCAL-00035" summary="get to handling this FUCKING INSTANT">
+      <option name="closed" value="true" />
+      <created>1745950987537</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1745950987537</updated>
+    </task>
+    <task id="LOCAL-00036" summary="get to handling this FUCKING INSTANT">
+      <option name="closed" value="true" />
+      <created>1745951027764</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1745951027764</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
