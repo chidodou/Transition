@@ -12,7 +12,9 @@ public class Beatmap {
                 String[] parts = line.split(",");
                 float time = Float.parseFloat(parts[0].trim());
                 int lane = Integer.parseInt(parts[1].trim());
-                notes.add(new Note(time, lane));
+                int type = Integer.parseInt(parts[2].trim());
+
+                notes.add(new Note(time, lane, type));
             }
         }
         catch (Exception e) { e.printStackTrace(); }
