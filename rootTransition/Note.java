@@ -12,7 +12,7 @@ public class Note {
 
 
     }
-    public void note(){
+    public void note() {
 
     }
     public boolean isHit() { return hit = true;}
