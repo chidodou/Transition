@@ -15,7 +15,7 @@ public class Note {
         // define to hit a note
     }
     public void note() {
-        // define the appearing of a note as a renderable object, how it interacts with the editor, how it
+        // define the appearing of a note as a renderable object, how it interacts with the editor
     }
 
     // this one should be simple
