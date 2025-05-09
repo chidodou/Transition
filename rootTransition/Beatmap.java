@@ -1,8 +1,17 @@
+/**
+ * Loads a beatmap and its notes as a json file
+ */
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Beatmap {
     public List<Note> notes = new ArrayList<>();
+    public String title;
+    public String audioFile;
+    private static final Logger logger = Logger.getLogger(Beatmap.class.getName());
 
     public void loadFromFile(String path) {
         try {
@@ -18,7 +27,7 @@ public class Beatmap {
                 notes.add(new Note(time, x, y, type));
             }
         }
-        catch (Exception e) { e.printStackTrace(); }
+        catch (Exception e) { logger.log(Level.SEVERE, "An unexpected error occurred", e); }
     }
 
     public List<Note> getNotes() { return notes; }

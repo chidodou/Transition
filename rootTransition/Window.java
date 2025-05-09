@@ -1,3 +1,4 @@
+import org.lwjgl.glfw.GLFWDropCallback;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
@@ -24,6 +25,7 @@ public class Window {
     private ScreenSettings screenSettings;
     private ScreenSelect screenSelect;
     private ScreenEdit screenEdit;
+    private BeatmapManager beatmapManager = new BeatmapManager();
 
 
     private ScreenState currentScreen = ScreenState.SCREEN_MENU;
@@ -63,6 +65,21 @@ public class Window {
         glfwSetKeyCallback(window, (window, key, scancode, action, mods) -> {
             if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE)
                 glfwSetWindowShouldClose(window, true);
+            if (key >= 0 && key < GLFW_KEY_LAST) {
+                if (action == GLFW_PRESS) {
+                    Keyboard.setKey(key, true);
+                } else if (action == GLFW_RELEASE) {
+                    Keyboard.setKey(key, false);
+                }
+            }
+        });
+
+        glfwSetDropCallback(window, (windowHandle, count, names) -> {
+            for (int i = 0; i < count; i++) {
+                String path = GLFWDropCallback.getName(names, i);
+                beatmapManager.handleDroppedFile(path);
+                screenSelect.reloadSongs();
+            }
         });
 
         try (MemoryStack stack = stackPush()) {

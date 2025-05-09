@@ -1,5 +1,10 @@
-[
-  {"time": 2489.7, "x": 128, "y": 128, "type": 1},
-  {"time": 2500, "x": 128, "y": 128, "type": 1},
-  {"time": 2600, "x": 256, "y": 700, "type": 1}
-]
+{
+  "title": "Malcolm Todd - Chest Pain",
+  "audioFile": "audio.mp3",
+  "notes": [
+    { "time": 1.235, "x":1, "y":1, "type": 1 },
+    { "time": 1.235, "x":1, "y":1, "type": 1 },
+    { "time": 1.235, "x":1, "y":1, "type": 1 },
+    { "time": 1.235, "x":1, "y":1, "type": 1 }
+  ]
+}

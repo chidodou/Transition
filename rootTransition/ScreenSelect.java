@@ -10,6 +10,13 @@ public class ScreenSelect {
     double[] mouseY;
     boolean[] isMouseDown;
     Window w;
+    private long lastKeyTime = 0;
+    private static final long KEY_COOLDOWN = 200_000_000; // 200ms in nanoseconds
+    private boolean prevUpPressed = false;
+    private boolean prevDownPressed = false;
+    private boolean prevEnterPressed = false;
+    private ScreenGame screenGame;
+
 
     public ScreenSelect(Window w) { this.w = w; }
 
@@ -36,8 +43,35 @@ public class ScreenSelect {
     public void update() {
         clickableBack.update(mouseX[0], mouseY[0], isMouseDown[0]);
         if (clickableBack.wasClicked()) {
+
             w.setScreen(Window.ScreenState.SCREEN_MENU);
         }
+        boolean upPressed = Keyboard.isKeyPressed(GLFW_KEY_UP);
+        boolean downPressed = Keyboard.isKeyPressed(GLFW_KEY_DOWN);
+        boolean enterPressed = Keyboard.isKeyPressed(GLFW_KEY_ENTER);
+
+// DOWN
+        if (downPressed && !prevDownPressed) {
+            selectedIndex++;
+            if (selectedIndex >= manager.getCount()) selectedIndex = 0;
+        }
+
+// UP
+        if (upPressed && !prevUpPressed) {
+            selectedIndex--;
+            if (selectedIndex < 0) selectedIndex = manager.getCount() - 1;
+        }
+
+// ENTER
+        if (enterPressed && !prevEnterPressed) {
+            BeatmapInfo selected = manager.getBeatmap(selectedIndex);
+            // game.startWithBeatmap(selected.filePath);
+        }
+
+// Update previous states
+        prevUpPressed = upPressed;
+        prevDownPressed = downPressed;
+        prevEnterPressed = enterPressed;
     }
 
     public void render() {
@@ -50,7 +84,8 @@ public class ScreenSelect {
             if (i == selectedIndex) {
                 // Draw highlighted
                 drawText(w.vg, 683, startY + i * 50, title + " <");
-            }  else {
+            }
+            else {
                 drawText(w.vg, 683, startY + i * 50, title);
             }
         }
@@ -63,6 +98,11 @@ public class ScreenSelect {
         nvgRGBA((byte)255, (byte)255, (byte)255, (byte)255, color);
         nvgFillColor(vg, color);
         nvgText(vg, x, y, text);
+    }
+
+    public void reloadSongs() {
+        manager = new BeatmapManager(); // reload from disk
+        selectedIndex = 0; // reset selection or keep current if preferred
     }
 
     BeatmapManager manager = new BeatmapManager();

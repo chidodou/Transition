@@ -1,3 +1,7 @@
+/**
+ * Initalizes what a button is
+ */
+
 import org.lwjgl.nanovg.NVGColor;
 import static org.lwjgl.nanovg.NanoVG.*;
 
@@ -32,7 +36,7 @@ public class Clickable {
     public void render(long vg) {
         NVGColor color = NVGColor.create();
 
-        // Draw button background
+        // Draw a button background
         nvgBeginPath(vg);
         nvgRoundedRect(vg, x, y, width, height, 10);
         nvgFillColor(vg, hovered

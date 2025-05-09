@@ -9,13 +9,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54386ee9-f715-4549-9881-34270b135d95" name="Changes" comment="handling beatmaps, audio, note/object loading, notepad editing; editor should come last">
+    <list default="true" id="54386ee9-f715-4549-9881-34270b135d95" name="Changes" comment="beatmap + audio managing &amp; listing added">
+      <change afterPath="$PROJECT_DIR$/rootTransition/ButtonsSettings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rootTransition/ScreenGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Transition.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Transition.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Transition/Audio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/Audio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Transition/Beatmap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/Beatmap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Transition/BeatmapInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/BeatmapInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Transition/BeatmapManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/BeatmapManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Transition/Clickable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/Clickable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Transition/Cursor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/Cursor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Transition/Edit.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/Edit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Transition/Note.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/Note.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Transition/ScreenBeatmap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Transition/ScreenSelect.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/ScreenSelect.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Transition/Window$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/Window$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Transition/Window$ScreenState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/Window$ScreenState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Transition/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/Window.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rootTransition/Audio.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Audio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rootTransition/Beatmap.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Beatmap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rootTransition/BeatmapInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/BeatmapInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rootTransition/BeatmapManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/BeatmapManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rootTransition/Clickable.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Clickable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rootTransition/Cursor.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Cursor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rootTransition/Edit.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Edit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rootTransition/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rootTransition/Note.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Note.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rootTransition/Screen.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rootTransition/ScreenBeatmap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rootTransition/ScreenSelect.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/ScreenSelect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rootTransition/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rootTransition/songs/Malcolm Todd - Chest Pain/map.json" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/songs/Malcolm Todd - Chest Pain/map.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rootTransition/songs/Parry Gripp - Guinea Pig Bridge/map.json" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/songs/Parry Gripp - Guinea Pig Bridge/map.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rootTransition/songs/Unknown - Title Screen/map.json" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/songs/Unknown - Title Screen/map.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +102,10 @@
     &quot;Application.Start.executor&quot;: &quot;Run&quot;,
     &quot;Application.Window.executor&quot;: &quot;Run&quot;,
     &quot;Application.testPlayer.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
@@ -82,11 +114,11 @@
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/dodom/OneDrive/Desktop/Transition/lwjgl-3.3.6/lwjgl-zstd&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Facets&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -462,7 +494,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745952579839</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="handling beatmaps, audio, note/object loading, notepad editing; editor should come last">
+      <option name="closed" value="true" />
+      <created>1745953433946</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1745953433946</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -487,7 +527,18 @@
     <MESSAGE value="gitignored" />
     <MESSAGE value="get to handling this FUCKING INSTANT" />
     <MESSAGE value="handling beatmaps, audio, note/object loading, notepad editing; editor should come last" />
-    <option name="LAST_COMMIT_MESSAGE" value="handling beatmaps, audio, note/object loading, notepad editing; editor should come last" />
+    <MESSAGE value="beatmap + audio managing &amp; listing added" />
+    <option name="LAST_COMMIT_MESSAGE" value="beatmap + audio managing &amp; listing added" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -4,10 +4,8 @@ public class Main {
     }
 }
 
+// debug in Window class
 
-/*
-debug in Window class
- */
 
 /**
  * woohoo we love reminders

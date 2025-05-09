@@ -1,3 +1,7 @@
+/**
+ * Handles all audio within the window
+ */
+
 import org.lwjgl.openal.AL;
 import org.lwjgl.openal.AL10;
 import org.lwjgl.openal.ALC;
