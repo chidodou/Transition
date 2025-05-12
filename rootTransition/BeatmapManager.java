@@ -66,6 +66,7 @@ public class BeatmapManager {
             map.audioFile = "audio.mp3";
             map.notes = new ArrayList<>();
 
+
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             String json = gson.toJson(map);
 

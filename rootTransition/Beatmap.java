@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 
 public class Beatmap {
     public List<Note> notes = new ArrayList<>();
+    public int bpm;
     public String title;
     public String audioFile;
     private static final Logger logger = Logger.getLogger(Beatmap.class.getName());
