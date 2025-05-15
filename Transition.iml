@@ -12,5 +12,6 @@
     <orderEntry type="library" exported="" name="lwjgl" level="project" />
     <orderEntry type="library" exported="" name="google.code.gson" level="project" />
     <orderEntry type="library" exported="" name="mpatric.mp3agic" level="project" />
+    <orderEntry type="library" exported="" name="javazoom.jlayer" level="project" />
   </component>
 </module>

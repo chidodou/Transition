@@ -124,6 +124,9 @@ public class Window {
 
         screenGame = new ScreenGame(this);
         screenGame.init();
+
+        Audio.init();
+
     }
 
     private void loop() {

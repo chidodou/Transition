@@ -1,6 +1,7 @@
 import com.google.gson.Gson;
 import org.lwjgl.nanovg.NVGColor;
 
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -8,36 +9,49 @@ import java.util.List;
 
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.nanovg.NanoVG.*;
+import static org.lwjgl.openal.AL10.*;
 
 public class ScreenGame {
-    private Clickable clickableBack;
+    final float aspectRatio = 4f / 3f;
+    private final float gridWidth = 640f;
+    private final float gridHeight = 480f;
+    private final float hexRadius = 40f;
+    private final float hexHeight = (float) (Math.sqrt(3) * hexRadius); // ~69.28
+    private final float vertSpacing = hexHeight; // 69.28
+    private final float hexWidth = 2 * hexRadius; // 80
+    private final float horizSpacing = 0.75f * hexWidth; // 60
+    private final float offsetX = (1366 - gridWidth) / 2f; // center horizontally
+    private final float offsetY = (768 - gridHeight) / 2f; // center vertically
     double[] mouseX;
     double[] mouseY;
     boolean[] isMouseDown;
     Window w;
+    private Clickable clickableBack;
     private Beatmap loadedBeatmap;
-
-    private final float gridWidth = 512f;
-    private final float gridHeight = 384f;
-    private final float hexRadius = 40f;
-
-    private final float hexHeight = (float) (Math.sqrt(3) * hexRadius); // ~69.28
-    private final float hexWidth = 2 * hexRadius; // 80
-    private final float horizSpacing = 0.75f * hexWidth; // 60
-    private final float vertSpacing = hexHeight; // 69.28
-
-    private final float offsetX = (1366 - gridWidth) / 2f; // center horizontally
-    private final float offsetY = (768 - gridHeight) / 2f; // center vertically
-
-    private List<float[]> hexCenters = new ArrayList<>();
+    private int audioSource = -1;
+    private final List<float[]> hexCenters = new ArrayList<>();
+    private String beatmapPath;
 
     public ScreenGame(Window w) {
         this.w = w;
     }
 
+    public void startAudio(String filePath) throws Exception {
+        int buffer = loadSound(filePath);
+        audioSource = alGenSources();
+        alSourcei(audioSource, AL_BUFFER, buffer);
+        alSourcef(audioSource, AL_GAIN, 1.0f);
+        alSourcePlay(audioSource);
+        int state = alGetSourcei(audioSource, AL_SOURCE_STATE);
+        System.out.println("Audio source state after play: " + state);
+        int error = alGetError();
+        if (error != AL_NO_ERROR) {
+            System.err.println("OpenAL error: " + error);
+        }
+    }
+
     public void init() {
         clickableBack = new Clickable(100, 650, 200, 60, "Back");
-
         generateHexGrid();
     }
 
@@ -61,17 +75,30 @@ public class ScreenGame {
     public void update() {
         clickableBack.update(mouseX[0], mouseY[0], isMouseDown[0]);
         if (clickableBack.wasClicked()) {
+            stopAudio();
             w.setScreen(Window.ScreenState.SCREEN_SELECT);
         }
-    }
+        if (audioSource != -1) {
+            int state = alGetSourcei(audioSource, AL_SOURCE_STATE);
+        }
 
+    }
+    private void stopAudio() {
+        if (audioSource != -1) {
+            alSourceStop(audioSource);
+            alDeleteSources(audioSource);
+            audioSource = -1;
+        }
+    }
 
 
     public void loadBeatmap(String filePath) {
         try {
             String json = new String(Files.readAllBytes(Paths.get(filePath)));
             loadedBeatmap = new Gson().fromJson(json, Beatmap.class);
+            beatmapPath = filePath; // <-- Save the path
             System.out.println("Loaded beatmap: " + loadedBeatmap.title);
+            startAudio(beatmapPath);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -125,4 +152,26 @@ public class ScreenGame {
         nvgStrokeWidth(vg, 1.5f);
         nvgStroke(vg);
     }
+
+    // A utility method (create once)
+    public int loadSound(String filePath) throws Exception {
+        int buffer = alGenBuffers();
+
+        File mapFile = new File(filePath);
+        File folder = mapFile.getParentFile();
+        File audioFile = new File(folder, "audio.mp3");
+
+
+        Audio.DecodedMP3 decoded = Audio.decodeMP3(audioFile.getAbsolutePath());
+        alBufferData(buffer, decoded.format, decoded.buffer, decoded.sampleRate);
+        int error = alGetError();
+        if (error != AL_NO_ERROR) {
+            System.err.println("OpenAL error: " + error);
+        }
+
+        // Don't free decoded.buffer here; keep it until sound no longer needed.
+
+        return buffer;
+    }
+
 }

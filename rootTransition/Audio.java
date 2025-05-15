@@ -1,74 +1,82 @@
-/**
- * Handles all audio within the window
- */
-
+import javazoom.jl.decoder.*;
 import org.lwjgl.openal.AL;
-import org.lwjgl.openal.AL10;
-import org.lwjgl.openal.ALC;
-import org.lwjgl.openal.ALC10;
-import org.lwjgl.openal.ALCapabilities;
-import org.lwjgl.stb.STBVorbisInfo;
-import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
 import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import java.nio.ShortBuffer;
+import java.util.ArrayList;
+import java.util.List;
 
-import static org.lwjgl.openal.AL10.*;
+import org.lwjgl.openal.ALC;
+
 import static org.lwjgl.openal.ALC10.*;
-import static org.lwjgl.openal.ALC11.*;
-import static org.lwjgl.stb.STBVorbis.*;
-import static org.lwjgl.system.MemoryStack.stackPush;
-import static org.lwjgl.system.MemoryUtil.NULL;
+import static org.lwjgl.openal.AL10.*;
+
+import static org.lwjgl.openal.AL10.AL_FORMAT_STEREO16;
+
 
 public class Audio {
 
-    private long device;
-    private long context;
-    private int buffer;
-    private int source;
+    public static class DecodedMP3 {
+        public ByteBuffer buffer;
+        public int sampleRate;
+        public int format;
 
-    public void init(String filepath) {
-        // Open default device
-        device = alcOpenDevice((ByteBuffer) null);
-        if (device == NULL) throw new IllegalStateException("Failed to open the default OpenAL device.");
+    }
+    public static void init(){
+        long device = alcOpenDevice((ByteBuffer) null); // default device
+        if (device == 0) throw new IllegalStateException("Failed to open the default OpenAL device.");
 
-        // Create context
-        context = alcCreateContext(device, (IntBuffer) null);
+        long context = alcCreateContext(device, (int[]) null);
         alcMakeContextCurrent(context);
         AL.createCapabilities(ALC.createCapabilities(device));
+    }
+    public static DecodedMP3 decodeMP3(String filepath) throws Exception {
+        Bitstream bitstream = new Bitstream(new BufferedInputStream(new FileInputStream(filepath)));
+        Decoder decoder = new Decoder();
 
-        // Load audio file
-        buffer = alGenBuffers();
-        source = alGenSources();
+        List<Short> samplesList = new ArrayList<>();
+        int sampleRate = 44100;
+        int channels = 2;
 
-        try (MemoryStack stack = stackPush()) {
-            IntBuffer channelsBuffer = stack.mallocInt(1);
-            IntBuffer sampleRateBuffer = stack.mallocInt(1);
+        Header header;
+        SampleBuffer output;
 
-            ShortBuffer rawAudioBuffer = stb_vorbis_decode_filename(filepath, channelsBuffer, sampleRateBuffer);
-            if (rawAudioBuffer == null) {
-                throw new RuntimeException("Failed to load audio: " + filepath);
+        while ((header = bitstream.readFrame()) != null) {
+            output = (SampleBuffer) decoder.decodeFrame(header, bitstream);
+            sampleRate = output.getSampleFrequency();
+            channels = output.getChannelCount();
+
+            short[] samples = output.getBuffer();
+            for (short s : samples) {
+                samplesList.add(s);
             }
 
-            int channels = channelsBuffer.get(0);
-            int sampleRate = sampleRateBuffer.get(0);
-            int format = channels == 1 ? AL_FORMAT_MONO16 : AL_FORMAT_STEREO16;
-
-            alBufferData(buffer, format, rawAudioBuffer, sampleRate);
+            bitstream.closeFrame();
         }
+        bitstream.close();
 
-        alSourcei(source, AL_BUFFER, buffer);
+        // Convert List<Short> to ByteBuffer
+        ByteBuffer pcmBuffer = MemoryUtil.memAlloc(samplesList.size() * 2);
+        for (short s : samplesList) {
+            pcmBuffer.putShort(s);
+        }
+        pcmBuffer.flip();
+
+        int format;
+        if (channels == 1) format = AL_FORMAT_MONO16;
+        else if (channels == 2) format = AL_FORMAT_STEREO16;
+        else throw new IllegalArgumentException("Unsupported channel count: " + channels);
+
+        DecodedMP3 result = new DecodedMP3();
+        result.buffer = pcmBuffer;
+        result.sampleRate = sampleRate;
+        result.format = format;
+
+        System.out.println("Decoded MP3 - Samples: " + samplesList.size() + ", SampleRate: " + sampleRate + ", Channels: " + channels);
+
+        return result;
     }
 
-    public void play() { alSourcePlay(source); }
-
-    public boolean isPlaying() { return alGetSourcei(source, AL_SOURCE_STATE) == AL_PLAYING; }
-
-    public void cleanup() {
-        alDeleteSources(source);
-        alDeleteBuffers(buffer);
-        alcDestroyContext(context);
-        alcCloseDevice(device);
-    }
 }
