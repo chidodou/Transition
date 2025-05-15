@@ -1,10 +1,7 @@
 {
+  "bpm": "",
+  "msLength": "100000",
   "title": "Malcolm Todd - Chest Pain",
   "audioFile": "audio.mp3",
-  "notes": [
-    { "time": 1.235, "x":1, "y":1, "type": 1 },
-    { "time": 1.235, "x":1, "y":1, "type": 1 },
-    { "time": 1.235, "x":1, "y":1, "type": 1 },
-    { "time": 1.235, "x":1, "y":1, "type": 1 }
-  ]
+  "notes": []
 }

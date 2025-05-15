@@ -8,10 +8,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Beatmap {
-    public List<Note> notes = new ArrayList<>();
-    public int bpm;
+    public String bpm;
+    public String msLength;
     public String title;
     public String audioFile;
+    public List<Note> notes = new ArrayList<>();
     private static final Logger logger = Logger.getLogger(Beatmap.class.getName());
 
     public void loadFromFile(String path) {

@@ -65,7 +65,7 @@ public class ScreenSelect {
 // ENTER
         if (enterPressed && !prevEnterPressed) {
             BeatmapInfo selected = manager.getBeatmap(selectedIndex);
-            // game.startWithBeatmap(selected.filePath);
+            w.startWithBeatmap(selected.filePath);
         }
 
 // Update previous states

@@ -1,25 +1,39 @@
 public class Note {
-    // public class for all general notes, disregarding types
-    // will be addressed later
-    public float time;   // in ms
-    public int x,y,type;   // which track/lane
-    public boolean hit = false; // detector for clicked objects
+    private float targetX, targetY; // hexagon target position
+    private float x, y;             // current position (falling)
+    private long spawnTime;         // when note starts falling (in ms)
+    private long hitTime;           // when note should reach the hex position (in ms)
+    private boolean reached;
 
-    public Note(float time, int x, int y, int type) {
-        // time: at what position in milliseconds
-        // position: x/y coordinate on the screen
-        // type: if note is click or no click, or if its a hold note
-        // all types of notes referred to as an object/entity
+    public Note(float targetX, float targetY, long spawnTime, long hitTime) {
+        this.targetX = targetX;
+        this.targetY = targetY;
+        this.x = targetX;
+        this.y = 0;          // start from top of screen (y=0)
+        this.spawnTime = spawnTime;
+        this.hitTime = hitTime;
+        this.reached = false;
     }
 
-    public void hitNote() {
-        // define to hit a note
-    }
-    public void note() {
-        // define the appearing of a note as a renderable object, how it interacts with the editor
+    // Update current position based on current time in milliseconds
+    public void update(long currentTime) {
+        if (currentTime < spawnTime) {
+            // Not started yet, stay at top
+            return;
+        }
+        if (currentTime >= hitTime) {
+            y = targetY;
+            reached = true;
+            return;
+        }
+        float progress = (float)(currentTime - spawnTime) / (hitTime - spawnTime);
+        y = progress * (targetY - 0); // linear interpolation from 0 to targetY
     }
 
+    public boolean isReached() {
+        return reached;
+    }
 
-    // this one should be simple
-    public boolean isHit() { return hit = true;}
+    public float getX() { return x; }
+    public float getY() { return y; }
 }

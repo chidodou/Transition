@@ -26,6 +26,8 @@ public class Window {
     private ScreenSelect screenSelect;
     private ScreenEdit screenEdit;
     private BeatmapManager beatmapManager = new BeatmapManager();
+    private ScreenGame screenGame;
+
 
 
     private ScreenState currentScreen = ScreenState.SCREEN_MENU;
@@ -119,6 +121,9 @@ public class Window {
 
         screenEdit = new ScreenEdit(this);
         screenEdit.init();
+
+        screenGame = new ScreenGame(this);
+        screenGame.init();
     }
 
     private void loop() {
@@ -149,6 +154,10 @@ public class Window {
                     screenEdit.update();
                     screenEdit.render();
                     break;
+                case SCREEN_GAME:
+                    screenGame.update();
+                    screenGame.render();
+                    break;
             }
 
             nvgEndFrame(vg);
@@ -161,7 +170,8 @@ public class Window {
         SCREEN_MENU,
         SCREEN_SETTINGS,
         SCREEN_SELECT,
-        SCREEN_EDIT
+        SCREEN_EDIT,
+        SCREEN_GAME
     }
 
     public void setScreen(ScreenState state) {
@@ -171,6 +181,13 @@ public class Window {
         else if (state == ScreenState.SCREEN_SETTINGS) { screenSettings.detectC(); }
         else if (state == ScreenState.SCREEN_SELECT) { screenSelect.detectC(); }
         else if (state == ScreenState.SCREEN_EDIT) { screenEdit.detectC(); }
+        else if (state == ScreenState.SCREEN_GAME) { screenGame.detectC(); }
+
+    }
+
+    public void startWithBeatmap(String filePath) {
+        screenGame.loadBeatmap(filePath);
+        setScreen(ScreenState.SCREEN_GAME); // or SCREEN_GAME if you renamed it
     }
 
 }

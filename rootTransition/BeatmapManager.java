@@ -13,14 +13,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.mpatric.mp3agic.InvalidDataException;
+import com.mpatric.mp3agic.Mp3File;
+import com.mpatric.mp3agic.UnsupportedTagException;
+
+
 public class BeatmapManager {
     private List<BeatmapInfo> beatmaps = new ArrayList<>();
 
     public BeatmapManager() {
-        //
-        //beatmaps.add(new BeatmapInfo("Malcolm Todd - Chest Pain", "res/song1.txt"));
-        //beatmaps.add(new BeatmapInfo("Parry Gripp - Guinea Pig Bridge",  "res/song2.txt"));
-        //beatmaps.add(new BeatmapInfo("Unknown - Title Screen", "res/song3.txt"));
         File songsDir = new File("rootTransition/songs");
         if (!songsDir.exists()) songsDir.mkdirs();
 
@@ -34,7 +35,8 @@ public class BeatmapManager {
                         Beatmap beatmap = gson.fromJson(json, Beatmap.class);
                         if (beatmap != null && beatmap.title != null) {
                             beatmaps.add(new BeatmapInfo(beatmap.title, mapFile.getAbsolutePath()));
-                        } else {
+                        }
+                        else {
                             System.err.println("Invalid or incomplete map.json: " + mapFile.getAbsolutePath());
                         }
                     }
@@ -65,6 +67,29 @@ public class BeatmapManager {
             map.title = folderName;
             map.audioFile = "audio.mp3";
             map.notes = new ArrayList<>();
+            map.bpm = "";
+
+            Mp3File mp3 = null;
+            int tries = 0;
+            while (mp3 == null && tries < 5) {
+                try {
+                    mp3 = new Mp3File(targetMp3);
+                } catch (IOException | InvalidDataException | UnsupportedTagException e) {
+                    try {
+                        Thread.sleep(100); // wait a bit and try again
+                    } catch (InterruptedException ignored) {}
+                    tries++;
+                }
+            }
+
+            if (mp3 != null) {
+                long durationMs = mp3.getLengthInMilliseconds();
+                map.msLength = Long.toString(durationMs);
+            } else {
+                System.err.println("Could not load MP3 file: " + targetMp3.getAbsolutePath());
+                return; // or throw an exception
+            }
+
 
 
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
