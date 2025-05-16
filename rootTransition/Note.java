@@ -1,39 +1,74 @@
 public class Note {
-    private float targetX, targetY; // hexagon target position
-    private float x, y;             // current position (falling)
-    private long spawnTime;         // when note starts falling (in ms)
-    private long hitTime;           // when note should reach the hex position (in ms)
-    private boolean reached;
+    public enum State { WAITING, HIT, MISS, DONE }
+
+    private static final long HIT_WINDOW_MS = 100;
+    private static final long FADE_DURATION_MS = 400;
+
+    private float targetX, targetY;
+    private float x, y;
+    private long spawnTime, hitTime;
+    private float fadeAlpha = 255f;
+    private State state = State.WAITING;
 
     public Note(float targetX, float targetY, long spawnTime, long hitTime) {
         this.targetX = targetX;
         this.targetY = targetY;
         this.x = targetX;
-        this.y = 0;          // start from top of screen (y=0)
+        this.y = 0;
         this.spawnTime = spawnTime;
         this.hitTime = hitTime;
-        this.reached = false;
     }
 
-    // Update current position based on current time in milliseconds
-    public void update(long currentTime) {
+    public void update(long currentTime, double mouseX, double mouseY) {
+        if (state == State.DONE) return;
+
         if (currentTime < spawnTime) {
-            // Not started yet, stay at top
             return;
         }
-        if (currentTime >= hitTime) {
-            y = targetY;
-            reached = true;
-            return;
+
+        if (state == State.WAITING) {
+            if (currentTime >= hitTime - HIT_WINDOW_MS && currentTime <= hitTime + HIT_WINDOW_MS) {
+                // In hit window
+                y = targetY;
+                if (isHovered(mouseX, mouseY)) {
+                    state = State.HIT;
+                }
+            } else if (currentTime > hitTime + HIT_WINDOW_MS) {
+                state = State.MISS;
+            } else {
+                // Falling animation
+                float progress = (float) (currentTime - spawnTime) / (hitTime - spawnTime);
+                y = progress * (targetY - 0);
+            }
         }
-        float progress = (float)(currentTime - spawnTime) / (hitTime - spawnTime);
-        y = progress * (targetY - 0); // linear interpolation from 0 to targetY
+
+        if (state == State.MISS) {
+            // Fade out
+            float elapsed = currentTime - (hitTime + HIT_WINDOW_MS);
+            fadeAlpha = 255f - (elapsed * 255f / FADE_DURATION_MS);
+            if (fadeAlpha <= 0) {
+                state = State.DONE;
+            }
+        }
+
+        if (state == State.HIT) {
+            fadeAlpha = 255f; // Could fade if you want
+            state = State.DONE;
+        }
     }
 
-    public boolean isReached() {
-        return reached;
+    public boolean isHovered(double mouseX, double mouseY) {
+        double dx = mouseX - x;
+        double dy = mouseY - y;
+        return Math.sqrt(dx * dx + dy * dy) <= 40;
+    }
+
+    public boolean hasSpawned(long currentTime) {
+        return currentTime >= spawnTime && state != State.DONE;
     }
 
     public float getX() { return x; }
     public float getY() { return y; }
+    public float getAlpha() { return fadeAlpha; }
+    public State getState() { return state; }
 }

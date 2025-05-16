@@ -31,6 +31,8 @@ public class ScreenGame {
     private int audioSource = -1;
     private final List<float[]> hexCenters = new ArrayList<>();
     private String beatmapPath;
+    private NoteManager noteManager = new NoteManager();
+    private long songStartTime;
 
     public ScreenGame(Window w) {
         this.w = w;
@@ -81,7 +83,8 @@ public class ScreenGame {
         if (audioSource != -1) {
             int state = alGetSourcei(audioSource, AL_SOURCE_STATE);
         }
-
+        long currentTime = System.currentTimeMillis() - songStartTime;
+        noteManager.update(currentTime, mouseX[0], mouseY[0]);
     }
     private void stopAudio() {
         if (audioSource != -1) {
@@ -99,6 +102,8 @@ public class ScreenGame {
             beatmapPath = filePath; // <-- Save the path
             System.out.println("Loaded beatmap: " + loadedBeatmap.title);
             startAudio(beatmapPath);
+            noteManager.loadFromBeatmap(loadedBeatmap, hexCenters);
+            songStartTime = System.currentTimeMillis();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -113,6 +118,8 @@ public class ScreenGame {
         for (float[] center : hexCenters) {
             drawHexagon(w.vg, center[0], center[1], hexRadius, color);
         }
+        long currentTime = System.currentTimeMillis() - songStartTime;
+        noteManager.render(w.vg, mouseX[0], mouseY[0], hexRadius, currentTime);
     }
 
     private void generateHexGrid() {

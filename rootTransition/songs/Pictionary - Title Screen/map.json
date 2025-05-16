@@ -4,6 +4,7 @@
   "title": "Pictionary - Title Screen",
   "audioFile": "audio.mp3",
   "notes": [
-
+    { "index": 0, "spawnTime": 1000, "hitTime": 2000 },
+    { "index": 3, "spawnTime": 1500, "hitTime": 2500 }
   ]
 }

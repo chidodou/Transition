@@ -13,18 +13,18 @@ import org.lwjgl.openal.ALC;
 import static org.lwjgl.openal.ALC10.*;
 import static org.lwjgl.openal.AL10.*;
 
-import static org.lwjgl.openal.AL10.AL_FORMAT_STEREO16;
-
-
 public class Audio {
 
     public static class DecodedMP3 {
         public ByteBuffer buffer;
         public int sampleRate;
         public int format;
-
     }
-    public static void init(){
+
+    private static long startTime = 0;
+    private static int audioSource = -1;
+
+    public static void init() {
         long device = alcOpenDevice((ByteBuffer) null); // default device
         if (device == 0) throw new IllegalStateException("Failed to open the default OpenAL device.");
 
@@ -32,6 +32,7 @@ public class Audio {
         alcMakeContextCurrent(context);
         AL.createCapabilities(ALC.createCapabilities(device));
     }
+
     public static DecodedMP3 decodeMP3(String filepath) throws Exception {
         Bitstream bitstream = new Bitstream(new BufferedInputStream(new FileInputStream(filepath)));
         Decoder decoder = new Decoder();
@@ -57,17 +58,16 @@ public class Audio {
         }
         bitstream.close();
 
-        // Convert List<Short> to ByteBuffer
         ByteBuffer pcmBuffer = MemoryUtil.memAlloc(samplesList.size() * 2);
         for (short s : samplesList) {
             pcmBuffer.putShort(s);
         }
         pcmBuffer.flip();
 
-        int format;
-        if (channels == 1) format = AL_FORMAT_MONO16;
-        else if (channels == 2) format = AL_FORMAT_STEREO16;
-        else throw new IllegalArgumentException("Unsupported channel count: " + channels);
+        int format = (channels == 1) ? AL_FORMAT_MONO16 : AL_FORMAT_STEREO16;
+        if (channels != 1 && channels != 2) {
+            throw new IllegalArgumentException("Unsupported channel count: " + channels);
+        }
 
         DecodedMP3 result = new DecodedMP3();
         result.buffer = pcmBuffer;
@@ -75,8 +75,32 @@ public class Audio {
         result.format = format;
 
         System.out.println("Decoded MP3 - Samples: " + samplesList.size() + ", SampleRate: " + sampleRate + ", Channels: " + channels);
-
         return result;
     }
 
+    public static void play(String filePath) throws Exception {
+        DecodedMP3 decoded = decodeMP3(filePath);
+        int buffer = alGenBuffers();
+        alBufferData(buffer, decoded.format, decoded.buffer, decoded.sampleRate);
+
+        audioSource = alGenSources();
+        alSourcei(audioSource, AL_BUFFER, buffer);
+        alSourcef(audioSource, AL_GAIN, 1.0f);
+        alSourcePlay(audioSource);
+
+        startTime = System.currentTimeMillis();
+        System.out.println("Audio started at: " + startTime + " ms");
+    }
+
+    public static long getStartTime() {
+        return startTime;
+    }
+
+    public static void stop() {
+        if (audioSource != -1) {
+            alSourceStop(audioSource);
+            alDeleteSources(audioSource);
+            audioSource = -1;
+        }
+    }
 }

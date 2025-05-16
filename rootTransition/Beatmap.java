@@ -12,25 +12,19 @@ public class Beatmap {
     public String msLength;
     public String title;
     public String audioFile;
-    public List<Note> notes = new ArrayList<>();
-    private static final Logger logger = Logger.getLogger(Beatmap.class.getName());
+    public List<NoteData> notes = new ArrayList<>();
 
-    public void loadFromFile(String path) {
-        try {
-            List<String> lines = java.nio.file.Files.readAllLines(java.nio.file.Paths.get(path));
-            for (String line : lines) {
-                if (line.trim().isEmpty()) continue;
-                String[] parts = line.split(",");
-                float time = Float.parseFloat(parts[0].trim());
-                int x = Integer.parseInt(parts[1].trim());
-                int y = Integer.parseInt(parts[2].trim());
-                int type = Integer.parseInt(parts[3].trim());
+    public static class NoteData {
+        public int index;         // index of the hexagon
+        public long spawnTime;    // when note starts falling
+        public long hitTime;      // when note reaches the target
 
-                notes.add(new Note(time, x, y, type));
-            }
+        public NoteData(int index, long spawnTime, long hitTime) {
+            this.index = index;
+            this.spawnTime = spawnTime;
+            this.hitTime = hitTime;
         }
-        catch (Exception e) { logger.log(Level.SEVERE, "An unexpected error occurred", e); }
     }
 
-    public List<Note> getNotes() { return notes; }
+    public List<NoteData> getNotes() { return notes; }
 }
