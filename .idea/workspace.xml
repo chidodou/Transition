@@ -9,16 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54386ee9-f715-4549-9881-34270b135d95" name="Changes" comment="update for working hexagons &amp; rendering logic using json">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Transition/Note.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/Note.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Transition/rootTransition.iml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/rootTransition.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Grid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/Note.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Note.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/NoteManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/NoteManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/ScreenGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/ScreenGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/songs/Pictionary - Title Screen/map.json" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/songs/Pictionary - Title Screen/map.json" afterDir="false" />
-    </list>
+    <list default="true" id="54386ee9-f715-4549-9881-34270b135d95" name="Changes" comment="update for working hexagons &amp; rendering logic using json" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -518,7 +509,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747413982611</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="update for working hexagons &amp; rendering logic using json">
+      <option name="closed" value="true" />
+      <created>1747677040842</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1747677040842</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
