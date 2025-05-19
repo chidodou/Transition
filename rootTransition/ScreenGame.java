@@ -95,6 +95,7 @@ public class ScreenGame {
     }
 
 
+
     public void loadBeatmap(String filePath) {
         try {
             String json = new String(Files.readAllBytes(Paths.get(filePath)));
@@ -112,14 +113,33 @@ public class ScreenGame {
     public void render() {
         clickableBack.render(w.vg);
 
-        NVGColor color = NVGColor.create();
-        nvgRGBA((byte) 255, (byte) 255, (byte) 255, (byte) 150, color);
+        long currentTime = System.currentTimeMillis() - songStartTime;
 
-        for (float[] center : hexCenters) {
+        // Draw hex grid with dynamic outline color
+        for (int i = 0; i < hexCenters.size(); i++) {
+            float[] center = hexCenters.get(i);
+            boolean isApproaching = noteManager.isNoteApproaching(i, currentTime, 0);
+            NVGColor color = NVGColor.create();
+            if (isApproaching) {
+                nvgRGBA((byte) 0, (byte) 255, (byte) 0, (byte) 200, color); // green outline
+            } else {
+                nvgRGBA((byte) 255, (byte) 255, (byte) 255, (byte) 150, color); // normal
+            }
             drawHexagon(w.vg, center[0], center[1], hexRadius, color);
         }
-        long currentTime = System.currentTimeMillis() - songStartTime;
+
         noteManager.render(w.vg, mouseX[0], mouseY[0], hexRadius, currentTime);
+        int misses = noteManager.countMisses();
+        drawTopRightText(w.vg, "Misses: " + misses, 1300, 20); // Adjust X,Y as needed
+    }
+
+    private void drawTopRightText(long vg, String text, float x, float y) {
+        NVGColor color = NVGColor.create();
+        nvgRGBA((byte) 255, (byte) 0, (byte) 0, (byte) 255, color);
+        nvgFontSize(vg, 28f);
+        nvgTextAlign(vg, NVG_ALIGN_RIGHT | NVG_ALIGN_TOP);
+        nvgFillColor(vg, color);
+        nvgText(vg, x, y, text);
     }
 
     private void generateHexGrid() {

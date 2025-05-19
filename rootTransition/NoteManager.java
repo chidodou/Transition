@@ -7,20 +7,27 @@ import static org.lwjgl.nanovg.NanoVG.*;
 
 public class NoteManager {
     private final List<Note> notes = new ArrayList<>();
+    private int totalMisses = 0;
+
 
     public void loadFromBeatmap(Beatmap map, List<float[]> hexPositions) {
         notes.clear();
+        totalMisses = 0;
         for (int i = 0; i < map.notes.size(); i++) {
             Beatmap.NoteData nd = map.notes.get(i);
-            float[] pos = hexPositions.get(nd.index); // assumes index is valid
-            notes.add(new Note(pos[0], pos[1], nd.spawnTime, nd.hitTime));
+            float[] pos = hexPositions.get(nd.index);
+            notes.add(new Note(pos[0], pos[1], nd.spawnTime, nd.hitTime, nd.index));
         }
     }
 
     public void update(long currentTime, double mouseX, double mouseY) {
         for (Note note : notes) {
             if (note.hasSpawned(currentTime)) {
+                Note.State previous = note.getState();
                 note.update(currentTime, mouseX, mouseY);
+                if (previous != Note.State.MISS && note.getState() == Note.State.MISS) {
+                    totalMisses++;
+                }
             }
         }
     }
@@ -34,6 +41,31 @@ public class NoteManager {
             }
         }
     }
+
+    public boolean isNoteApproaching(int hexIndex, long currentTime, long windowMs) {
+        for (Note note : notes) {
+            if (note.getState() == Note.State.DONE) continue;
+            if (note.getTargetIndex() == hexIndex &&
+                    currentTime >= note.getSpawnTime() &&
+                    currentTime <= note.getHitTime()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public int countMisses() {
+        int count = 0;
+        for (Note note : notes) {
+            if (note.getState() == Note.State.MISS) {
+                count++;
+            }
+        }
+        return totalMisses;
+    }
+
+
 
     private void drawFallingNote(long vg, float cx, float cy, float r, Note.State state, float alpha) {
         NVGColor fill = NVGColor.create();

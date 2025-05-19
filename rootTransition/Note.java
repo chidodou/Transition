@@ -9,14 +9,18 @@ public class Note {
     private long spawnTime, hitTime;
     private float fadeAlpha = 255f;
     private State state = State.WAITING;
+    private int targetIndex;
 
-    public Note(float targetX, float targetY, long spawnTime, long hitTime) {
+
+    public Note(float targetX, float targetY, long spawnTime, long hitTime, int targetIndex) {
         this.targetX = targetX;
         this.targetY = targetY;
         this.x = targetX;
         this.y = 0;
         this.spawnTime = spawnTime;
         this.hitTime = hitTime;
+        this.targetIndex = targetIndex;
+
     }
 
     public void update(long currentTime, double mouseX, double mouseY) {
@@ -71,4 +75,8 @@ public class Note {
     public float getY() { return y; }
     public float getAlpha() { return fadeAlpha; }
     public State getState() { return state; }
+    public int getTargetIndex() { return targetIndex; }
+    public long getHitTime() { return hitTime; }
+    public long getSpawnTime() { return spawnTime; }
+
 }

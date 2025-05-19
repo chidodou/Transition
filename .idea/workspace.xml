@@ -9,32 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54386ee9-f715-4549-9881-34270b135d95" name="Changes" comment="Audio and json handling works, just to add the entirety of json note editing + functionality...">
+    <list default="true" id="54386ee9-f715-4549-9881-34270b135d95" name="Changes" comment="update for working hexagons &amp; rendering logic using json">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Transition/Audio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/Audio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Transition/Beatmap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/Beatmap.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Transition/Note.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/Note.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Transition/Switch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/Switch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/Audio.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Audio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/Beatmap.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Beatmap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/BeatmapInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/BeatmapInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/BeatmapManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/BeatmapManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/ButtonsSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/ButtonsSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/Clickable.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Clickable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/Cursor.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Cursor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/Edit.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Edit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Transition/rootTransition.iml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Transition/rootTransition.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rootTransition/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Grid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/Keyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Keyboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rootTransition/Note.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Note.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/ScreenEdit.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/ScreenEdit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rootTransition/NoteManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/NoteManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rootTransition/ScreenGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/ScreenGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/ScreenMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/ScreenMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/ScreenSelect.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/ScreenSelect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/ScreenSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/ScreenSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/Switch.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Switch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rootTransition/rootTransition.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/rootTransition.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rootTransition/songs/Pictionary - Title Screen/map.json" beforeDir="false" afterPath="$PROJECT_DIR$/rootTransition/songs/Pictionary - Title Screen/map.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -145,15 +127,6 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
-      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
@@ -537,7 +510,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747335821995</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="update for working hexagons &amp; rendering logic using json">
+      <option name="closed" value="true" />
+      <created>1747413982611</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1747413982611</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -564,7 +545,8 @@
     <MESSAGE value="handling beatmaps, audio, note/object loading, notepad editing; editor should come last" />
     <MESSAGE value="beatmap + audio managing &amp; listing added" />
     <MESSAGE value="Audio and json handling works, just to add the entirety of json note editing + functionality..." />
-    <option name="LAST_COMMIT_MESSAGE" value="Audio and json handling works, just to add the entirety of json note editing + functionality..." />
+    <MESSAGE value="update for working hexagons &amp; rendering logic using json" />
+    <option name="LAST_COMMIT_MESSAGE" value="update for working hexagons &amp; rendering logic using json" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
